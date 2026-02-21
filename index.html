@@ -103,6 +103,52 @@ th{background:#007bff;
 
 <script>
 
+const today = new Date();
+let overdue=0, dueSoon=0, ok=0;
+
+function getStatus(nextPM){
+if(!nextPM) return "PLANNED";
+
+let nextDate = new Date(nextPM);
+let diff = (nextDate - today)/(1000*60*60*24);
+
+if(diff < 0){
+overdue++;
+return "OVERDUE";
+}
+else if(diff <= 7){
+dueSoon++;
+return "DUE SOON";
+}
+else{
+ok++;
+return "OK";
+}
+}
+
+const table = document.getElementById("pmTable");
+
+data.forEach(item=>{
+
+let status = getStatus(item.nextPM);
+
+let row = `<tr class="${status === 'OVERDUE' ? 'overdue' : status === 'DUE SOON' ? 'duesoon' : 'ok'}">
+<td>${item.location}</td>
+<td>${item.charger}</td>
+<td>${item.lastPM ? item.lastPM : "-"}</td>
+<td>90 Days</td>
+<td>${item.nextPM}</td>
+<td>${status}</td>
+</tr>`;
+
+table.innerHTML += row;
+});
+
+document.getElementById("totalStations").innerText = data.length;
+document.getElementById("overdueCount").innerText = overdue;
+document.getElementById("dueSoonCount").innerText = dueSoon;
+document.getElementById("okCount").innerText = ok;
+
 const data = [
 {location:"HYDERABAD → VIJAYAWADA", site:"HOTEL VIVERA, NARKETPALLE", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-21", nextPM:"2026-01-19"},
 {location:"DELHI → CHANDIGARH", site:"GOLDEN HUT, KURUKSHETRA", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-17", nextPM:"2026-01-15"},
