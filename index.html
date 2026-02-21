@@ -103,6 +103,14 @@ th{background:#007bff;
 
 <script>
 
+<script>
+
+const data = [
+{location:"HYDERABAD → VIJAYAWADA", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-21", nextPM:"2026-01-19"},
+{location:"DELHI → CHANDIGARH", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-17", nextPM:"2026-01-15"},
+{location:"MUMBAI CITY", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-22", nextPM:"2026-01-20"}
+];
+
 const today = new Date();
 let overdue=0, dueSoon=0, ok=0;
 
@@ -132,10 +140,10 @@ data.forEach(item=>{
 
 let status = getStatus(item.nextPM);
 
-let row = `<tr class="${status === 'OVERDUE' ? 'overdue' : status === 'DUE SOON' ? 'duesoon' : 'ok'}">
+let row = `<tr>
 <td>${item.location}</td>
 <td>${item.charger}</td>
-<td>${item.lastPM ? item.lastPM : "-"}</td>
+<td>${item.lastPM ?? "-"}</td>
 <td>90 Days</td>
 <td>${item.nextPM}</td>
 <td>${status}</td>
