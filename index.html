@@ -41,9 +41,34 @@ OK: <span id="okCount">0</span>
 <script>
 
 const data = [
-{station:"VADODARA → MUMBAI", charger:"180KW-STAR", lastPM:"2025-10-13", nextPM:"2026-01-11"},
-{station:"PUNE CITY", charger:"60KW-ADOR", lastPM:"2025-10-25", nextPM:"2026-01-23"},
-{station:"CHENNAI CITY", charger:"60KW-ADOR", lastPM:"2025-10-15", nextPM:"2026-01-13"}
+
+{location:"HYDERABAD → VIJAYAWADA", site:"HOTEL VIVERA, NARKETPALLE", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-21", nextPM:"2026-01-19"},
+{location:"DELHI → CHANDIGARH", site:"GOLDEN HUT, KURUKSHETRA", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-17", nextPM:"2026-01-15"},
+{location:"MUMBAI CITY", site:"BKC", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-22", nextPM:"2026-01-20"},
+{location:"MUMBAI → SURAT", site:"FOOD HUB, MANOR", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-13", nextPM:"2026-01-11"},
+{location:"DELHI → JAIPUR", site:"HIGHWAY KING, NEEMRANA", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-13", nextPM:"2026-01-11"},
+{location:"PUNE CITY", site:"SEASON'S MALL, MAGARPATTA", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-25", nextPM:"2026-01-23"},
+{location:"HYDERABAD CITY", site:"SANDHYA CONVENTION CENTRE", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-26", nextPM:"2026-01-24"},
+{location:"AHMEDABAD CITY", site:"FRIZBEE, SP RING ROAD", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-13", nextPM:"2026-01-11"},
+{location:"MUMBAI → NASHIK", site:"HOTEL VRINDAVAN", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-27", nextPM:"2026-01-25"},
+{location:"BENGALURU CITY", site:"THE PAVILION", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-14", nextPM:"2026-01-12"},
+{location:"HYDERABAD → BENGALURU", site:"HOTEL BLUE MOON, ANANTHAPUR", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-14", nextPM:"2026-01-12"},
+{location:"BENGALURU → PUNE", site:"SAI GANESH, HUBBALI", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-14", nextPM:"2026-01-12"},
+{location:"BENGALURU → MANGALURU", site:"MTR RESTAURANT, BELLUR", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-13", nextPM:"2026-01-11"},
+{location:"PUNE → KOLHAPUR", site:"OSCARWADI OMSAI99, SATARA", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-13", nextPM:"2026-01-11"},
+{location:"VADODARA → MUMBAI", site:"RUDRAKSH FOOD MALL, VAREDIA", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-13", nextPM:"2026-01-11"},
+{location:"SOLAPUR → PUNE", site:"HOTEL NISARG, SOLAPUR", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-13", nextPM:"2026-01-11"},
+
+// TN LOCATIONS
+
+{location:"CHENNAI CITY", site:"SPENCERS PLAZA", charger:"180KW-STAR", lastPM:"2025-10-15", nextPM:"2026-01-13"},
+{location:"TIRUVANNAMALAI CITY", site:"A2B HOTEL SEASONS", charger:"60KW-ADOR", lastPM:"2025-10-16", nextPM:"2026-01-14"},
+{location:"MADURAI → KANYAKUMARI", site:"MITTAI KADAI", charger:"60KW-ADOR", lastPM:"2025-10-17", nextPM:"2026-01-15"},
+{location:"CHENNAI CITY", site:"ARUN INTERNATIONAL", charger:"60KW-ADOR", lastPM:"2025-10-15", nextPM:"2026-01-13"},
+{location:"MADURAI → KANYAKUMARI", site:"JBS BISTRO", charger:"60KW-ADOR", lastPM:null, nextPM:"2026-01-31"},
+{location:"MADURAI → KANYAKUMARI", site:"VEEPES BISTRO", charger:"60KW-EXICOM", lastPM:null, nextPM:"2026-03-01"},
+{location:"TRICHY → DINDIGUL", site:"SURYAS VEGGIE", charger:"60KW-ADOR", lastPM:null, nextPM:"2026-03-31"}
+
 ];
 
 let overdue=0, dueSoon=0, ok=0;
