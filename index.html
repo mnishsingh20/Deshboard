@@ -5,7 +5,8 @@
 <title>EV Charging PM Dashboard</title>
 
 <style>
-body{font-family: Arial, sans-serif;
+body{
+font-family: Arial, sans-serif;
 margin:0;
 padding:20px;
 background:#eef2f7;
@@ -58,6 +59,7 @@ padding:12px;
 td{
 padding:10px;
 border-bottom:1px solid #ddd;
+text-align:center;
 }
 
 tr:hover{
@@ -67,77 +69,14 @@ background:#f1f5ff;
 .overdue{background:#ffdddd;}
 .duesoon{background:#fff4cc;}
 .ok{background:#ddffea;}
+</style>
+</head>
 
-<script>
+<body>
 
-const data = [
+<h1>EV Charging PM Dashboard</h1>
 
-{location:"HYDERABAD → VIJAYAWADA", site:"HOTEL VIVERA, NARKETPALLE", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-21", nextPM:"2026-01-19"},
-{location:"DELHI → CHANDIGARH", site:"GOLDEN HUT, KURUKSHETRA", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-17", nextPM:"2026-01-15"},
-{location:"MUMBAI CITY", site:"BKC", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-22", nextPM:"2026-01-20"},
-{location:"MUMBAI → SURAT", site:"FOOD HUB, MANOR", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-13", nextPM:"2026-01-11"},
-{location:"DELHI → JAIPUR", site:"HIGHWAY KING, NEEMRANA", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-13", nextPM:"2026-01-11"},
-{location:"PUNE CITY", site:"SEASON'S MALL, MAGARPATTA", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-25", nextPM:"2026-01-23"},
-{location:"HYDERABAD CITY", site:"SANDHYA CONVENTION CENTRE", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-26", nextPM:"2026-01-24"},
-{location:"AHMEDABAD CITY", site:"FRIZBEE, SP RING ROAD", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-13", nextPM:"2026-01-11"},
-{location:"MUMBAI → NASHIK", site:"HOTEL VRINDAVAN", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-27", nextPM:"2026-01-25"},
-{location:"BENGALURU CITY", site:"THE PAVILION", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-14", nextPM:"2026-01-12"},
-{location:"HYDERABAD → BENGALURU", site:"HOTEL BLUE MOON, ANANTHAPUR", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-14", nextPM:"2026-01-12"},
-{location:"BENGALURU → PUNE", site:"SAI GANESH, HUBBALI", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-14", nextPM:"2026-01-12"},
-{location:"BENGALURU → MANGALURU", site:"MTR RESTAURANT, BELLUR", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-13", nextPM:"2026-01-11"},
-{location:"PUNE → KOLHAPUR", site:"OSCARWADI OMSAI99, SATARA", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-13", nextPM:"2026-01-11"},
-{location:"VADODARA → MUMBAI", site:"RUDRAKSH FOOD MALL, VAREDIA", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-13", nextPM:"2026-01-11"},
-{location:"SOLAPUR → PUNE", site:"HOTEL NISARG, SOLAPUR", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-13", nextPM:"2026-01-11"},
-
-// TN LOCATIONS
-
-{location:"CHENNAI CITY", site:"SPENCERS PLAZA", charger:"180KW-STAR", lastPM:"2025-10-15", nextPM:"2026-01-13"},
-{location:"TIRUVANNAMALAI CITY", site:"A2B HOTEL SEASONS", charger:"60KW-ADOR", lastPM:"2025-10-16", nextPM:"2026-01-14"},
-{location:"MADURAI → KANYAKUMARI", site:"MITTAI KADAI", charger:"60KW-ADOR", lastPM:"2025-10-17", nextPM:"2026-01-15"},
-{location:"CHENNAI CITY", site:"ARUN INTERNATIONAL", charger:"60KW-ADOR", lastPM:"2025-10-15", nextPM:"2026-01-13"},
-{location:"MADURAI → KANYAKUMARI", site:"JBS BISTRO", charger:"60KW-ADOR", lastPM:null, nextPM:"2026-01-31"},
-{location:"MADURAI → KANYAKUMARI", site:"VEEPES BISTRO", charger:"60KW-EXICOM", lastPM:null, nextPM:"2026-03-01"},
-{location:"TRICHY → DINDIGUL", site:"SURYAS VEGGIE", charger:"60KW-ADOR", lastPM:null, nextPM:"2026-03-31"}
-
-];
-
-let overdue=0, dueSoon=0, ok=0;
-const today = new Date();
-
-function getStatus(date){
-let next = new Date(date);
-let diff = (next - today)/(1000*60*60*24);
-
-if(diff < 0){ overdue++; return "OVERDUE"; }
-else if(diff <= 7){ dueSoon++; return "DUE SOON"; }
-else{ ok++; return "OK"; }
-}
-
-const table = document.getElementById("pmTable");
-
-data.forEach(item=>{
-let status = getStatus(item.nextPM);
-
-table.innerHTML += `
-<tr>
-<td>${item.location}</td>
-<td>${item.charger}</td>
-<td>${item.lastPM}</td>
-<td>${item.nextPM}</td>
-<td>${status}</td>
-</tr>`;
-});
-
-document.getElementById("totalStations").innerText = data.length;
-document.getElementById("overdueCount").innerText = overdue;
-document.getElementById("dueSoonCount").innerText = dueSoon;
-document.getElementById("okCount").innerText = ok;
-
-</script>
-
-</body>
-</html>
-  <div class="dashboard-cards">
+<div class="dashboard-cards">
 <div class="card total">
 <h2 id="totalStations">0</h2>
 <p>Total Chargers</p>
@@ -158,3 +97,62 @@ document.getElementById("okCount").innerText = ok;
 <p>OK</p>
 </div>
 </div>
+
+<table>
+<thead>
+<tr>
+<th>Station</th>
+<th>Charger</th>
+<th>Last PM</th>
+<th>Next PM</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody id="pmTable"></tbody>
+</table>
+
+<script>
+
+const data = [
+{location:"VADODARA → MUMBAI", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-13", nextPM:"2026-01-11"},
+{location:"PUNE CITY", charger:"60KW-ADOR", lastPM:"2025-10-25", nextPM:"2026-01-23"},
+{location:"CHENNAI CITY", charger:"60KW-ADOR", lastPM:"2025-10-15", nextPM:"2026-01-13"},
+{location:"HYDERABAD CITY", charger:"180KW-STAR", lastPM:"2025-10-26", nextPM:"2026-01-24"}
+];
+
+let overdue=0, dueSoon=0, ok=0;
+const today = new Date();
+
+function getStatus(date){
+let next = new Date(date);
+let diff = (next - today)/(1000*60*60*24);
+
+if(diff < 0){ overdue++; return "OVERDUE"; }
+else if(diff <= 7){ dueSoon++; return "DUE SOON"; }
+else{ ok++; return "OK"; }
+}
+
+const table = document.getElementById("pmTable");
+
+data.forEach(item=>{
+let status = getStatus(item.nextPM);
+
+table.innerHTML += `
+<tr class="${status==='OVERDUE'?'overdue':status==='DUE SOON'?'duesoon':'ok'}">
+<td>${item.location}</td>
+<td>${item.charger}</td>
+<td>${item.lastPM}</td>
+<td>${item.nextPM}</td>
+<td>${status}</td>
+</tr>`;
+});
+
+document.getElementById("totalStations").innerText = data.length;
+document.getElementById("overdueCount").innerText = overdue;
+document.getElementById("dueSoonCount").innerText = dueSoon;
+document.getElementById("okCount").innerText = ok;
+
+</script>
+
+</body>
+</html>
