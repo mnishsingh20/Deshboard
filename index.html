@@ -158,18 +158,41 @@ return "OK";
 }
 }
 
+const today = new Date();
+let overdue=0, dueSoon=0, ok=0;
+
+function getStatus(nextPM){
+if(!nextPM) return "PLANNED";
+
+let nextDate = new Date(nextPM);
+let diff = (nextDate - today)/(1000*60*60*24);
+
+if(diff < 0){
+overdue++;
+return "OVERDUE";
+}
+else if(diff <= 7){
+dueSoon++;
+return "DUE SOON";
+}
+else{
+ok++;
+return "OK";
+}
+}
+
 const table = document.getElementById("pmTable");
 
 data.forEach(item=>{
-let nextPM = calculateNextPM(item.lastPM, item.frequency);
-let status = getStatus(nextPM);
+
+let status = getStatus(item.nextPM);
 
 let row = `<tr class="${status === 'OVERDUE' ? 'overdue' : status === 'DUE SOON' ? 'duesoon' : 'ok'}">
-<td>${item.station}</td>
+<td>${item.location}</td>
 <td>${item.charger}</td>
-<td>${item.lastPM}</td>
-<td>${item.frequency}</td>
-<td>${nextPM.toISOString().split('T')[0]}</td>
+<td>${item.lastPM ? item.lastPM : "-"}</td>
+<td>90 Days</td>
+<td>${item.nextPM}</td>
 <td>${status}</td>
 </tr>`;
 
@@ -180,8 +203,3 @@ document.getElementById("totalStations").innerText = data.length;
 document.getElementById("overdueCount").innerText = overdue;
 document.getElementById("dueSoonCount").innerText = dueSoon;
 document.getElementById("okCount").innerText = ok;
-
-</script>
-
-</body>
-</html>
