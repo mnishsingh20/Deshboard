@@ -5,38 +5,69 @@
 <title>EV Charging PM Dashboard</title>
 
 <style>
-body{font-family: Arial; padding:20px; background:#f4f6f9;}
-h1{text-align:center;}
-.card{background:white;padding:15px;margin:10px;border-radius:8px;text-align:center;}
-table{width:100%;background:white;border-collapse:collapse;margin-top:20px;}
-th,td{padding:8px;border:1px solid #ddd;text-align:center;}
-th{background:#007bff;color:white;}
-</style>
-</head>
+body{
+font-family: Arial, sans-serif;
+margin:0;
+padding:20px;
+background:#eef2f7;
+}
 
-<body>
+h1{
+text-align:center;
+margin-bottom:20px;
+}
 
-<h1>EV Charging PM Dashboard</h1>
+.dashboard-cards{
+display:flex;
+gap:15px;
+justify-content:center;
+flex-wrap:wrap;
+margin-bottom:20px;
+}
 
-<div class="card">
-Total Chargers: <span id="totalStations">0</span> |
-Overdue: <span id="overdueCount">0</span> |
-Due Soon: <span id="dueSoonCount">0</span> |
-OK: <span id="okCount">0</span>
-</div>
+.card{
+flex:1;
+min-width:200px;
+padding:20px;
+border-radius:12px;
+color:white;
+font-weight:bold;
+text-align:center;
+box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
 
-<table>
-<thead>
-<tr>
-<th>Station</th>
-<th>Charger</th>
-<th>Last PM</th>
-<th>Next PM</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody id="pmTable"></tbody>
-</table>
+.total{background:linear-gradient(45deg,#2c3e50,#4ca1af);}
+.overdue-card{background:linear-gradient(45deg,#e53935,#e35d5b);}
+.duesoon-card{background:linear-gradient(45deg,#f7971e,#ffd200);}
+.ok-card{background:linear-gradient(45deg,#11998e,#38ef7d);}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+th{
+background:#1f6feb;
+color:white;
+padding:12px;
+}
+
+td{
+padding:10px;
+border-bottom:1px solid #ddd;
+}
+
+tr:hover{
+background:#f1f5ff;
+}
+
+.overdue{background:#ffdddd;}
+.duesoon{background:#fff4cc;}
+.ok{background:#ddffea;}
 
 <script>
 
@@ -90,7 +121,7 @@ let status = getStatus(item.nextPM);
 
 table.innerHTML += `
 <tr>
-<td>${item.station}</td>
+<td>${item.location}</td>
 <td>${item.charger}</td>
 <td>${item.lastPM}</td>
 <td>${item.nextPM}</td>
@@ -107,3 +138,24 @@ document.getElementById("okCount").innerText = ok;
 
 </body>
 </html>
+  <div class="dashboard-cards">
+<div class="card total">
+<h2 id="totalStations">0</h2>
+<p>Total Chargers</p>
+</div>
+
+<div class="card overdue-card">
+<h2 id="overdueCount">0</h2>
+<p>Overdue</p>
+</div>
+
+<div class="card duesoon-card">
+<h2 id="dueSoonCount">0</h2>
+<p>Due Soon</p>
+</div>
+
+<div class="card ok-card">
+<h2 id="okCount">0</h2>
+<p>OK</p>
+</div>
+</div>
