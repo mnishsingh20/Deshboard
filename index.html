@@ -5,74 +5,51 @@
 <title>EV Charging PM Dashboard</title>
 
 <style>
-body{
-    font-family: Arial, sans-serif;
+body{font-family: Arial, sans-serif;
     margin:0;
     padding:10px;
-    background:#f4f6f9;
-}
+    background:#f4f6f9;}
 
-h1{
-    text-align:center;
-    font-size:22px;
-}
+h1{text-align:center;
+    font-size:22px;}
 
 .dashboard-cards{
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
     gap:10px;
-    margin:15px 0;
-}
+    margin:15px 0;}
 
-.card{
-    background:white;
+.card{background:white;
     padding:15px;
     border-radius:10px;
     text-align:center;
-    box-shadow:0 2px 6px rgba(0,0,0,0.1);
-}
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);}
 
-.card h2{
-    margin:5px 0;
-    font-size:20px;
-}
+.card h2{margin:5px 0;
+    font-size:20px;}
 
-.table-container{
-    overflow-x:auto;
-}
+.table-container{overflow-x:auto;}
 
-table{
-    width:100%;
+table{width:100%;
     border-collapse:collapse;
     background:white;
-    min-width:600px;
-}
+    min-width:600px;}
 
-th,td{
-    padding:8px;
+th,td{padding:8px;
     text-align:center;
     border-bottom:1px solid #ddd;
-    font-size:14px;
-}
+    font-size:14px;}
 
-th{
-    background:#007bff;
-    color:white;
-}
+th{background:#007bff;
+    color:white;}
 
-.overdue{
-    background:#ff4d4d;
-    color:white;
-}
+.overdue{background:#ff4d4d;
+    color:white;}
 
-.duesoon{
-    background:#ffc107;
-}
+.duesoon{background:#ffc107;}
 
-.ok{
-    background:#28a745;
-    color:white;
-}
+.ok{background:#28a745;
+    color:white;}
 
 /* Mobile adjustments */
 @media(max-width:600px){
@@ -129,8 +106,6 @@ th{
 <script>
 
 const data = [
-const data = [
-
 {location:"HYDERABAD → VIJAYAWADA", site:"HOTEL VIVERA, NARKETPALLE", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-21", nextPM:"2026-01-19"},
 {location:"DELHI → CHANDIGARH", site:"GOLDEN HUT, KURUKSHETRA", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-17", nextPM:"2026-01-15"},
 {location:"MUMBAI CITY", site:"BKC", charger:"180KW-STAR / 60KW-ADOR", lastPM:"2025-10-22", nextPM:"2026-01-20"},
